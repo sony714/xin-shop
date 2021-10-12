@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+  <view class='iconfont icon-shoucang'></view>
+  这是首页
+</view>

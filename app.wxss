@@ -1,2 +1,14 @@
 /**app.wxss**/
-@import './styles/iconfont.wxss'
+@import './styles/iconfont.wxss';
+ page,view,text,swiper,swiper-item,navigator{
+     box-sizing: border-box;
+ }
+
+ page{
+     /* 定义主题颜色 */
+     --themeColor:#eb4450;
+     /* 定义字体统一大小 */
+    font-size: 28rpx;
+ }
+    
+ 

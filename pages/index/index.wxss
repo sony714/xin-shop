@@ -6,4 +6,6 @@
   align-items: center;
   justify-content: space-between;
   box-sizing: border-box;
+  /* 使用主题颜色 */
+  color:var(--themeColor);
 }

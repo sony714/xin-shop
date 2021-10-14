@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/menu/index",
     "pages/shop/index",
-    "pages/home/index"
+    "pages/home/index",
+    "pages/search/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

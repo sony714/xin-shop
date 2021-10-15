@@ -3,4 +3,17 @@
   <!-- 搜索框开始 -->
   <SearchInput></SearchInput>
   <!-- 搜索框结束 -->
+  <!-- 轮播图开始 -->
+   <div class="index_swiper">
+     <swiper autoplay indicator-dots interval='2000'>
+       <swiper-item
+       wx:for="{{swiperList}}"
+       wx:key="goods_id">
+         <navigator>
+           <image mode="widthFix" src="{{item.image_src}}"></image>
+         </navigator>
+       </swiper-item>
+     </swiper>
+   </div>
+  <!-- 轮播图结束 -->
 </view>

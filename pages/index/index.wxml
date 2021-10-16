@@ -16,4 +16,43 @@
      </swiper>
    </div>
   <!-- 轮播图结束 -->
+  <!-- 标签分页开始 -->
+    <view class="cate_index">
+      <navigator class="" target="" url=""
+      wx:for="{{catesList}}"
+      wx:key="name"
+      hover-class="navigator-hover" open-type="navigate">
+         <image mode='widthFix' src='{{item.image_src}}'></image>
+      </navigator>
+    </view>
+  <!-- 标签分页结束 -->
+  <!-- 楼层开始 -->
+   <view class="floor_index">
+     <view class="floor_group"
+     wx:for="{{floorList}}"
+     wx:for-item="item1"
+     wx:for-index="index1"
+     wx:key="floor_title"
+     >
+    <view class="floor_title">
+      <image class="" src="{{item1.floor_title.image_src}}" mode="widthFix" lazy-load="false">
+      </image>
+    </view>
+    <view class="floor_content">
+      <navigator hover-class="navigator-hover" 
+      open-type="navigate"
+      wx:for="{{item1.product_list}}"
+      wx:for-item="item2"
+      wx:for-index = "index2"
+      wx:key="name"
+      >
+        <image src="{{item2.image_src}}" 
+        mode="{{index2===0?'widthFix':'scaleToFill'}}"
+        lazy-load="false">
+        </image>
+      </navigator>
+    </view>  
+   </view>
+  </view>
+  <!-- 楼层结束 -->
 </view>

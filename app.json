@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/menu/index",
-    "pages/shop/index",
+    "pages/category/index",
     "pages/home/index",
-    "pages/search/index"
+    "pages/search/index",
+    "pages/shop/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,7 +23,7 @@
         "selectedIconPath": "icons/首页选中.png"
       },
       {
-        "pagePath": "pages/menu/index",
+        "pagePath": "pages/category/index",
         "text": "菜单",
         "iconPath": "icons/菜单.png",
         "selectedIconPath": "icons/菜单选中.png"

@@ -10,5 +10,8 @@
      /* 定义字体统一大小 */
     font-size: 28rpx;
  }
-    
+
+ image{
+     width: 100%;
+ }
  

@@ -3,9 +3,11 @@
     <view class="cates_index">
         <!-- 左侧导航栏 -->
             <scroll-view scroll-y class="left_menu">
-               <view class="menu_item"
+               <view class="menu_item {{index===currentIndex?'active':''}}"
                wx:for="{{leftMenuList}}"
                wx:key="*this"
+               bindtap="handleTap"
+               data-index="{{index}}"
                >{{item}}</view>
             </scroll-view>
         <!-- 右侧商品内容 -->

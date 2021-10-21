@@ -11,7 +11,7 @@
                >{{item}}</view>
             </scroll-view>
         <!-- 右侧商品内容 -->
-          <scroll-view scroll-y class="right_content">
+          <scroll-view scroll-y scroll-top="{{scrollTop}}" class="right_content">
               <view class="goods_group"
               wx:for="{{rightContent}}"
               wx:key="cat_id"
@@ -24,7 +24,8 @@
                     <text class="delimiter">/</text>
                 </view>
                 <view class="goods_list">
-                    <navigator class="" target="" url="" hover-class="navigator-hover" open-type="navigate"
+                    <navigator
+                    url="/pages/goods_list/index?cid={{item2.cat_id}}"
                     wx:for="{{item1.children}}"
                     wx:key="cat_id"
                     wx:for-item="item2"

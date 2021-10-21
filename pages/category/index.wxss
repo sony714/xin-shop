@@ -41,4 +41,5 @@ page {
 .cates .cates_index .right_content .goods_group .goods_list navigator {
   width: 33.3%;
   text-align: center;
+  padding: 0 10px;
 }

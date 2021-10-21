@@ -4,7 +4,8 @@ Page({
   data: {
     leftMenuList:[],
     rightContent:[],
-    currentIndex:0
+    currentIndex:0,
+    scrollTop:''
   },
   onLoad: function (options) {
     //先判断本地存储有没有旧的数据
@@ -33,7 +34,7 @@ Page({
   },
   Cates:[],
   getCategories(){
-    request({url:'https://api-hmugo-web.itheima.net/api/public/v1/categories'})
+    request({url:'/categories'})
     .then(res=>{
       this.Cates = res.data.message
       //把数据存入本地存储中
@@ -51,7 +52,8 @@ Page({
     let rightContent = this.Cates[index].children
     this.setData({
       currentIndex:index,
-      rightContent
+      rightContent,
+      scrollTop:'0'
     })
   }
 })

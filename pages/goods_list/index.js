@@ -5,12 +5,37 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tab:[
+      {
+        id:0,
+        value:'1',
+        isActive:true
+      },
+      {
+        id:1,
+        value:'2',
+        isActive:false
+      },
+      {
+        id:2,
+        value:'3',
+        isActive:false
+      },
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
+  tabsItemChange(e){
+    const {index} = e.detail
+    let {tab} = this.data;
+    tab.forEach((v,i)=>i===index?v.isActive=true:v.isActive=false)
+    this.setData({
+      tab
+    })
+  },
+  
   onLoad: function (options) {
 
   },

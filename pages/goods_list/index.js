@@ -1,4 +1,5 @@
 // pages/goods_list/index.js
+import {request} from '../../request/index.js'
 Page({
 
   /**
@@ -8,22 +9,29 @@ Page({
     tab:[
       {
         id:0,
-        value:'1',
+        value:'商品列表',
         isActive:true
       },
       {
         id:1,
-        value:'2',
+        value:'商品详情',
         isActive:false
       },
       {
         id:2,
-        value:'3',
+        value:'商品搜索',
         isActive:false
-      },
-    ]
+      }
+    ],
+    goodsList:[]
   },
-
+   //接口要的参数
+   QueryParam:{
+     query:'',
+     cid:'',
+     pagenum:'',
+     pagesize:10
+   },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -37,9 +45,16 @@ Page({
   },
   
   onLoad: function (options) {
-
+    this.QueryParam.cid = options.cid
+    this.getGoodList()
   },
-
+  getGoodList(){
+    request({url:'/goods/search',data:this.QueryParam}).then(res=>{
+      this.setData({
+        goodsList:res.data.message.goods
+      })
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

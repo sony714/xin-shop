@@ -32,6 +32,7 @@ Page({
      pagenum:'',
      pagesize:10
    },
+   totalPages:1,
   /**
    * 生命周期函数--监听页面加载
    */
@@ -50,8 +51,10 @@ Page({
   },
   getGoodList(){
     request({url:'/goods/search',data:this.QueryParam}).then(res=>{
+      const total = res.data.message.total;
+      this.totalPages = Math.ceil(total/this.QueryParam.pagesize);
       this.setData({
-        goodsList:res.data.message.goods
+        goodsList:[...this.data.goodsList,...res.data.message.goods]
       })
     })
   },
@@ -94,13 +97,20 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if(this.QueryParam.pagenum>=this.totalPages){
+      wx.showToast({
+        title: '没数据啦!!'
+      });
+    }else{
+       this.QueryParam.pagenum++;
+       this.getGoodList()
+    }
   },
 
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    
   }
 })

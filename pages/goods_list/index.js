@@ -56,6 +56,7 @@ Page({
       this.setData({
         goodsList:[...this.data.goodsList,...res.data.message.goods]
       })
+      // wx.stopPullDownRefresh()
     })
   },
   /**
@@ -90,9 +91,14 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    // 重置数据
+    this.setData({
+      goodsList:[]
+    })
+    //重置传值
+    this.QueryParam.pagenum = 1
+    this.getGoodList()
   },
-
   /**
    * 页面上拉触底事件的处理函数
    */

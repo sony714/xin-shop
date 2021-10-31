@@ -4,7 +4,10 @@ Page({
   data: {
     goodsDetail:{}
   },
+  //商品对象
+  GoodInfo:{
 
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -15,6 +18,7 @@ Page({
 
   getGoodsDetail(goods_id){
     request({url:'/goods/detail',data:{goods_id}}).then(res=>{
+      this.GoodInfo = res.data.message
       this.setData({
         goodsDetail:{
           goods_price:res.data.message.goods_price,
@@ -23,6 +27,16 @@ Page({
           pics:res.data.message.pics
         }
       })
+    })
+  },
+  handleImagePreview(e){
+    // 1.先构造要预览的数组
+   const urls = this.GoodInfo.pics.map(v=>v.pics_mid)
+  //  2.接受传递过来的url
+  const current = e.currentTarget.dataset.url
+    wx.previewImage({
+      current,
+      urls
     })
   },
   /**

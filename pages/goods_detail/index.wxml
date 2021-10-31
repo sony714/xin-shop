@@ -5,8 +5,10 @@
     interval="2000"
     >
         <swiper-item
-        wx:for="{{goodsDetail.pics}}"
+        wx:for="{{goodsDetail.pics}}" asdsadasdasdasd
         wx:key="pics_id"
+        bindtap="handleImagePreview"
+        data-url="{{item.pics_mid}}"
         >
             <image src="{{item.pics_mid}}" mode="widthFix"></image>
         </swiper-item>

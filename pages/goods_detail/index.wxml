@@ -1,0 +1,14 @@
+<view class="goods_detail">
+    <swiper
+    autoplay
+    indicator-dots
+    interval="2000"
+    >
+        <swiper-item
+        wx:for="{{goodsDetail.data.message.pics}}"
+        wx:key="pics_id"
+        >
+            <image src="{{item.pics_mid}}" mode="widthFix"></image>
+        </swiper-item>
+    </swiper>
+</view>

@@ -34,7 +34,6 @@ Page({
   getFloorList(){
     request({url:'/home/floordata'})
     .then(res=>{
-      console.log(res)
       this.setData({
         floorList:res.data.message
       })

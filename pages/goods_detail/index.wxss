@@ -1,0 +1,10 @@
+/* pages/goods_detail/index.wxss */
+.goods_detail swiper {
+    height: 65vh;
+    text-align: center;
+    background-color: red;
+  }
+  .goods_detail swiper image {
+    width: 60%;
+  }
+  

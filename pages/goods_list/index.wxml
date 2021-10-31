@@ -5,6 +5,7 @@
          <navigator
          wx:for="{{goodsList}}"
          wx:key="goods_id"
+         url="/pages/goods_detail/index?goods_id={{item.goods_id}}"
          class="goods_item">
             <view class="img-wrap">
               <image mode="widthFix" src="{{item.goods_small_logo}}"></image>

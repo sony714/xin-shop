@@ -5,10 +5,26 @@
     interval="2000"
     >
         <swiper-item
-        wx:for="{{goodsDetail.data.message.pics}}"
+        wx:for="{{goodsDetail.pics}}"
         wx:key="pics_id"
         >
             <image src="{{item.pics_mid}}" mode="widthFix"></image>
         </swiper-item>
     </swiper>
+</view>
+
+<view class="goods_price">￥{{goodsDetail.goods_price}}</view>
+<view class="goods_name_row">
+    <view class="goods_name">{{goodsDetail.goods_name}}</view>
+    <text class="iconfont icon-shoucang"></text>
+    <view class="goods_collect">收藏</view>
+</view>
+
+<view class="goods_info">
+    <view class="goods_info_title">图文详情</view>
+    <view class="goods_info_content">
+        <rich-text class="" nodes="{{goodsDetail.goods_introduce}}">
+            
+        </rich-text>
+    </view>
 </view>

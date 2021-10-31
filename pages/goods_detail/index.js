@@ -16,7 +16,12 @@ Page({
   getGoodsDetail(goods_id){
     request({url:'/goods/detail',data:{goods_id}}).then(res=>{
       this.setData({
-        goodsDetail:res
+        goodsDetail:{
+          goods_price:res.data.message.goods_price,
+          goods_name:res.data.message.goods_name,
+          goods_introduce:res.data.message.goods_introduce.replace('/\.webp/g','.jpg'),
+          pics:res.data.message.pics
+        }
       })
     })
   },

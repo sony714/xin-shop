@@ -39,6 +39,30 @@ Page({
       urls
     })
   },
+  handleAddCart(){
+    //1.构造购物车
+    let cart = wx.getStorageSync('cart') || []
+    //判断购物车中有没有商品
+    let index = cart.findIndex(v=>v.goods_id === this.GoodInfo.goods_id)
+    if(index === -1){
+      //第一次添加
+      this.GoodInfo.num = 1
+      cart.push(this.GoodInfo)
+    }else{
+      //已经存在
+      cart[index].num++;
+    }
+    //把购物车重新添加缓存中
+    wx.setStorageSync('cart', cart)
+    //弹窗提示
+    wx.showToast({
+      title:'加入成功',
+      icon:'success',
+      //true 防止用户疯狂点击
+      mask: true
+    })
+  },
+  
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

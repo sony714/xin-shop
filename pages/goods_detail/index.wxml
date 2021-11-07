@@ -42,7 +42,7 @@
         <view>分享</view>
         <button open-type="share"></button>
     </view>
-    <navigator url="/pages/shop/index" open-type="switch" class="tool_item">
+    <navigator url="/pages/shop/index" class="tool_item" open-type="switchTab">
         <view class="iconfont icon-gouwuche"></view>
         <view>购物车</view>
     </navigator>

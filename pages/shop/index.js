@@ -41,13 +41,16 @@ Page({
     })
   },
   data: {
-    address:{}
+    address:{},
+    cart:[]
   },
   onShow: function () {
     let address = wx.getStorageSync('address')
+    let cart = wx.getStorageSync('cart')
     address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
     this.setData({
-      address
+      address,
+      cart
     })
   },
   /**

@@ -47,6 +47,7 @@ Page({
     if(index === -1){
       //第一次添加
       this.GoodInfo.num = 1
+      this.GoodInfo.checked = true
       cart.push(this.GoodInfo)
     }else{
       //已经存在

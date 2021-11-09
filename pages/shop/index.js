@@ -40,18 +40,56 @@ Page({
       }
     })
   },
+  handleItemChecked(e){
+    const id = e.currentTarget.dataset.id
+    let {cart} = this.data
+    let index = cart.findIndex(v=>v.goods_id === id)
+    cart[index].checked = !cart[index].checked
+    this.setCart(cart)
+  },
+  handleAllItemChecked(){
+    let {allChecked,cart} = this.data
+    allChecked = !allChecked
+    cart.forEach(v=>{
+      v.checked = allChecked
+    })
+    this.setCart(cart)
+  },
+  setCart(cart){
+    let totalNum = 0
+    let totalPrice = 0
+    let allChecked = true
+    cart.forEach(v=>{
+      if(v.checked){
+        totalNum += v.num
+        totalPrice+=v.num*v.goods_price
+      }else{
+        allChecked = false
+      }
+    })
+    allChecked = cart.length == 0?false:allChecked
+    this.setData({
+      cart,
+      allChecked,
+      totalNum,
+      totalPrice
+    })
+    wx.setStorageSync('cart', cart)
+  },
   data: {
     address:{},
-    cart:[]
+    cart:[],
+    allChecked:false,
+    totalNum:0,
+    totalPrice:0
   },
   onShow: function () {
     let address = wx.getStorageSync('address')
-    let cart = wx.getStorageSync('cart')
+    let cart = wx.getStorageSync('cart') || []
+    // const allChecked = []?cart.every(v=>v.checked):false
     address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
-    this.setData({
-      address,
-      cart
-    })
+    this.setData({address})
+    this.setCart(cart)
   },
   /**
    * 生命周期函数--监听页面加载

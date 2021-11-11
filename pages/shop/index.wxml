@@ -14,7 +14,8 @@
 <view class="cart_content">
     <view class="cart_title">购物车</view>
     <view class="cart_main">
-        <view class="cart_item"
+    <block wx:if="{{cart.length!==0}}">
+     <view class="cart_item"
         wx:for = "{{cart}}"
         wx:key = "goods_id"
         >
@@ -33,13 +34,17 @@
                 <view class="goods_price_wrap">
                     <view class="goods_price">￥"{{item.goods_price}}"</view>
                     <view class="cart_num_tool">
-                        <view class="num_edit">-</view>
+                        <view class="num_edit" bindtap="handleItemNum" data-id="{{item.goods_id}}" data-operation="-1">-</view>
                         <view class="goods_num">{{item.num}}</view>
-                        <view class="num_edit">+</view>
+                        <view class="num_edit" bindtap="handleItemNum" data-id="{{item.goods_id}}" data-operation="1">+</view>
                     </view>
                 </view>
             </view>
         </view>
+    </block>
+    <block wx:else>
+        购物车空空如也
+    </block>
     </view>
 </view>
 
@@ -55,7 +60,7 @@
         </view>
         <view>包含运费</view>
     </view>
-     <view class="order_pay">
+     <view class="order_pay" bindtap="handlePay">
          结算({{totalNum}})
      </view>
 </view>

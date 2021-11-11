@@ -55,6 +55,48 @@ Page({
     })
     this.setCart(cart)
   },
+  handleItemNum(e){
+    let {id,operation} = e.currentTarget.dataset
+    let {cart} = this.data
+    let index = cart.findIndex(v=>v.goods_id == id)
+    if(cart[index].num===1 && operation == -1){
+      wx.showModal({
+        title:'提示',
+        content:"是否要删除?",
+        success:(res)=>{
+          if(res.confirm){
+            cart.splice(index,1)
+            this.setCart(cart)
+          }else{
+            return 
+          }
+        }
+      })
+    }else{
+      cart[index].num +=Number(operation)
+      this.setCart(cart)
+    }
+  },
+  handlePay(){
+    const {address,totalNum} = this.data
+    if(!address.userName){
+      wx.showToast({
+        title:'你还没有选择收获地址',
+        icon:'none'
+      })
+      return
+    }
+    if(totalNum === 0){
+      wx.showToast({
+        title:'您还没有选择商品',
+        icon:'none'
+      })
+      return 
+    }
+    wx.navigateTo({
+      url: '/pages/pay/index'
+    })
+  },
   setCart(cart){
     let totalNum = 0
     let totalPrice = 0
